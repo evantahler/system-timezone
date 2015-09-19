@@ -1,6 +1,8 @@
 # System Timezone
 
-A simple package that checks various system configurations to attempt to determine what *this* computer's timezone is (in Olson notation).  This is a 100% javasctipt package that should work on any version of `node > 0.10.0`.
+A simple package that checks various system configuration files in an attempt to determine what *this* computer's timezone is (in Olson notation).  
+
+This is a 100% javasctipt package that should work on any version of `node > 0.10.0`.
 
 We do this via 4 methods:
 
@@ -18,7 +20,7 @@ var system_timezone = require('system-timezone');
 // If a timezone cannot be determined, an Error will be thrown.
 var thisTimezone = system_timezone();
 
-console.log( thisTimezone );
+console.log( thisTimezone ); // America/Los_Angeles
 ```
 
 ## TODO:
