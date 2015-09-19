@@ -10,7 +10,7 @@ node_js:
   - "4.0"
 os:
   - linux
-  - osx
-  - windows
+  # - osx -> cannot use NVM on OSX yet
+  # - windows -> cannot use windows on travis yet
 
 script: npm test
