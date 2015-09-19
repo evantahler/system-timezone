@@ -1,0 +1,26 @@
+{
+  "name": "system-timezone",
+  "version": "1.0.0",
+  "description": "A node.js package to return this host's timezone",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "system",
+    "timezone",
+    "time",
+    "node",
+    "clock",
+    "Olson",
+    "format"
+  ],
+  "author": "Evan Tahler",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^5.0.14"
+  }
+}
