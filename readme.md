@@ -1,4 +1,5 @@
 # System Timezone
+[![Build Status](https://travis-ci.org/evantahler/system-timezone.svg)](https://travis-ci.org/evantahler/system-timezone)
 
 A simple package that checks various system configuration files in an attempt to determine what *this* computer's timezone is (in Olson notation).  
 
