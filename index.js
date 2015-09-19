@@ -27,7 +27,7 @@ var timezone = function(){
   }
 
   else if( fs.existsSync('/etc/timezone') ){
-    string = fs.readSync('/etc/timezone'); 
+    string = fs.readFileSync('/etc/timezone'); 
     return trim(string);
   }
 
