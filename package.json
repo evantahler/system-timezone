@@ -1,7 +1,12 @@
 {
   "name": "system-timezone",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node.js package to return this host's timezone",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evantahler/actionhero.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -20,12 +25,8 @@
     "format"
   ],
   "author": "Evan Tahler",
-  "license": "ISC",
   "dependencies": {
-    "glob": "^5.0.14"
-  }, 
-  "devCependencies": {
-    "mocha": "^2.3.2",
-    "should": "^7.1.0"
+    "glob": "^5.0.14",
+    "mocha": "^2.3.2"
   }
 }

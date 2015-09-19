@@ -1,4 +1,3 @@
-var should = require('should');
 var system_timezone = require('../index.js');
 
 describe('system tiemzone', function(){
