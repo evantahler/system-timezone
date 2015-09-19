@@ -1,11 +1,11 @@
 {
   "name": "system-timezone",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A node.js package to return this host's timezone",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/evantahler/actionhero.git"
+    "url": "git://github.com/evantahler/system-timezone.git"
   },
   "main": "index.js",
   "scripts": {
