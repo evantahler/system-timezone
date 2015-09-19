@@ -13,6 +13,7 @@
     "system",
     "timezone",
     "time",
+    "zone",
     "node",
     "clock",
     "Olson",
@@ -22,5 +23,9 @@
   "license": "ISC",
   "dependencies": {
     "glob": "^5.0.14"
+  }, 
+  "devCependencies": {
+    "mocha": "^2.3.2",
+    "should": "^7.1.0"
   }
 }
