@@ -9,6 +9,18 @@ We do this via 4 methods:
 3. If `/etc/localtime` is present, and is a symlink to a file in `/usr/share/zoneinfo`, we can follow the link to know the proper timezone
 4. If `/etc/localtime` is present, but not a symlink, we MD5 the contents and compare it to all other files in, `/usr/share/zoneinfo`, and then return the name of the first match.
 
+## Examples:
+
+```javascript
+var system_timezone = require('system-timezone');
+
+// This is a slow, sync call.  It would be best to call it once at boot and cache the response
+// If a timezone cannot be determined, an Error will be thrown.
+var thisTimezone = system_timezone();
+
+console.log( thisTimezone );
+```
+
 ## TODO:
 - can we test this without messing up system time?
 - can we get this to work on windows?
