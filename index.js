@@ -13,10 +13,7 @@ var crypto = require('crypto');
 var glob   = require("glob");
 
 var trim = function(string){
-  string = string.toString();
-  string = string.replace(/\r/g, '');
-  string = string.replace(/\n/g, '');
-  return string;
+  return string.replace(/^\/usr\/share\/zoneinfo\//, '');
 };
 
 var timezone = function(){
@@ -27,14 +24,12 @@ var timezone = function(){
   }
 
   else if( fs.existsSync('/etc/timezone') ){
-    string = fs.readFileSync('/etc/timezone'); 
-    return trim(string);
+    string = fs.readFileSync('/etc/timezone', 'utf8'); 
+    return string.trim();
   }
 
   else if( fs.lstatSync('/etc/localtime').isSymbolicLink() ){
-    string = fs.readlinkSync('/etc/localtime');
-    string = string.replace('/usr/share/zoneinfo/', '');
-    return trim(string);
+    return trim(fs.readlinkSync('/etc/localtime'));
   }
 
   else{
@@ -49,8 +44,7 @@ var timezone = function(){
         localMd5Sum.update( fs.readFileSync(file) );
         var localMd5 = localMd5Sum.digest('hex');
         if( localMd5 === sourceMd5 ){
-          string = file.replace('/usr/share/zoneinfo/', '');
-          return trim(string);
+          return trim(file);
         }
       }
     }
