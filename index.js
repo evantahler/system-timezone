@@ -17,15 +17,12 @@ var trim = function(string){
 };
 
 var timezone = function(){
-  var string;
-
   if(process.env.TZ){ 
     return process.env.TZ; 
   }
 
   else if( fs.existsSync('/etc/timezone') ){
-    string = fs.readFileSync('/etc/timezone', 'utf8'); 
-    return string.trim();
+    return fs.readFileSync('/etc/timezone', 'utf8').trim();
   }
 
   else if( fs.lstatSync('/etc/localtime').isSymbolicLink() ){
