@@ -8,48 +8,48 @@
 
 ***/
 
-var fs     = require('fs');
+var fs = require('fs');
 var crypto = require('crypto');
-var glob   = require("glob");
+var glob = require("glob");
 
-var trim = function(string){
+var trim = function (string) {
   string = string.toString();
   string = string.replace(/\r/g, '');
   string = string.replace(/\n/g, '');
   return string;
 };
 
-var timezone = function(){
+var timezone = function () {
   var string, regxp_match;
 
-  if(process.env.TZ){ 
-    return process.env.TZ; 
+  if (process.env.TZ) {
+    return process.env.TZ;
   }
 
-  else if( fs.existsSync('/etc/timezone') ){
-    string = fs.readFileSync('/etc/timezone'); 
+  else if (fs.existsSync('/etc/timezone')) {
+    string = fs.readFileSync('/etc/timezone');
     return trim(string);
   }
 
-  else if( fs.lstatSync('/etc/localtime').isSymbolicLink() ){
+  else if (fs.lstatSync('/etc/localtime').isSymbolicLink()) {
     string = fs.readlinkSync('/etc/localtime');
     regxp_match = string.match(/\/zoneinfo\/(.+)$/)
     string = regxp_match ? regxp_match[1] : string
     return trim(string);
   }
 
-  else{
+  else {
     var md5sum = crypto.createHash('md5');
-    md5sum.update( fs.readFileSync('/etc/localtime') );
+    md5sum.update(fs.readFileSync('/etc/localtime'));
     var sourceMd5 = md5sum.digest('hex');
     var files = glob.sync('/usr/share/zoneinfo/**/*');
-    for(var i in files){
+    for (var i in files) {
       var file = files[i];
-      if( fs.statSync(file).isFile() ){
+      if (fs.statSync(file).isFile()) {
         var localMd5Sum = crypto.createHash('md5');
-        localMd5Sum.update( fs.readFileSync(file) );
+        localMd5Sum.update(fs.readFileSync(file));
         var localMd5 = localMd5Sum.digest('hex');
-        if( localMd5 === sourceMd5 ){
+        if (localMd5 === sourceMd5) {
           regxp_match = file.match(/\/zoneinfo\/(.+)$/)
           string = regxp_match ? regxp_match[1] : string
           return trim(string);
@@ -64,4 +64,3 @@ var timezone = function(){
 ///
 
 module.exports = timezone;
-if(!module.parent){ console.log( timezone() ); }
