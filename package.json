@@ -1,6 +1,6 @@
 {
   "name": "system-timezone",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "A node.js package to return this host's timezone",
   "license": "Apache-2.0",
   "repository": {
