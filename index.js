@@ -20,7 +20,7 @@ var trim = function(string){
 };
 
 var timezone = function(){
-  var string;
+  var string, regxp_match;
 
   if(process.env.TZ){ 
     return process.env.TZ; 
@@ -33,7 +33,8 @@ var timezone = function(){
 
   else if( fs.lstatSync('/etc/localtime').isSymbolicLink() ){
     string = fs.readlinkSync('/etc/localtime');
-    string = string.replace('/usr/share/zoneinfo/', '');
+    regxp_match = string.match(/\/zoneinfo\/(.+)$/)
+    string = regxp_match ? regxp_match[1] : string
     return trim(string);
   }
 
@@ -49,7 +50,8 @@ var timezone = function(){
         localMd5Sum.update( fs.readFileSync(file) );
         var localMd5 = localMd5Sum.digest('hex');
         if( localMd5 === sourceMd5 ){
-          string = file.replace('/usr/share/zoneinfo/', '');
+          regxp_match = file.match(/\/zoneinfo\/(.+)$/)
+          string = regxp_match ? regxp_match[1] : string
           return trim(string);
         }
       }
